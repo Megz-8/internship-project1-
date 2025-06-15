@@ -1,0 +1,377 @@
+/* Reset and base */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.87), rgba(255,255,255,0.9)),
+    url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
+  background-size: cover;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem 4rem;
+}
+
+/* Stylish Title */
+h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 3.5rem;
+  color: #870d44;
+  text-shadow: 2px 2px 8px #f47eab, 0 0 10px #f08dc8;
+  margin-bottom: 1rem;
+  user-select: none;
+}
+
+/* Subtitle */
+h2 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #5b5252;
+  margin-bottom: 2.5rem;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 3px #aaa;
+}
+
+/* Form container */
+.form-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 2rem 2.5rem;
+  width: 90%;
+  max-width: 900px;
+  box-shadow: 0 10px 25px rgba(255, 111, 97, 0.35);
+  margin-bottom: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.6rem;
+}
+
+/* Input groups */
+.input-group {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #870d44;
+  text-shadow: 1px 1px 2px #f47eab;
+  user-select: none;
+}
+
+textarea,
+input[type="text"] {
+  border: 2px solid #870d44;
+  border-radius: 15px;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 48px;
+  box-shadow: inset 0 3px 6px #f9d9d1;
+  transition: border-color 0.3s ease;
+  width: 100%;
+}
+
+textarea {
+  min-height: 100px;
+}
+
+textarea:focus,
+input[type="text"]:focus {
+  outline: none;
+  border-color: #f47eab;
+  box-shadow: 0 0 8px #870d44;
+}
+
+/* Search area */
+#recipe-search {
+  border-radius: 15px;
+  border: 2px solid #870d44;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 48px;
+  box-shadow: inset 0 3px 6px #f9d9d1;
+  transition: border-color 0.3s ease;
+}
+#recipe-search:focus {
+  outline: none;
+  border-color: #f47eab;
+  box-shadow: 0 0 8px #870d44;
+}
+
+/* Tawa button styling */
+.btn-tawa {
+  height: 42px;
+  width: 42px;
+  border-radius: 40% 40% 55% 55% / 55% 55% 75% 75%;
+  background: linear-gradient(135deg, #5c5c5c, #2c2c2c);
+  box-shadow: inset 0 3px 6px #000000cc, 0 6px 18px #000000dd;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 3px #0008);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffdb3a;
+  font-size: 1.7rem;
+  user-select: none;
+}
+.btn-tawa:hover {
+  background: linear-gradient(135deg, #999999, #555555);
+  box-shadow: inset 0 8px 12px #444444dd, 0 8px 20px #999999bb;
+  transform: translateY(-3px);
+}
+
+/* Buttons container */
+.btn-container {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex: 1 1 100%;
+  justify-content:center;
+  margin-top: 1rem;
+}
+
+/* Chef hat button */
+.btn-chef {
+  position: relative;
+  background: linear-gradient(135deg, #870d44, #f47eab);
+  border: none;
+  padding: 0.92rem 1.8rem 0.85rem;
+  border-radius: 30px 30px 50% 50% / 70% 70% 100% 100%;
+  color: white;
+  font-weight: 800;
+  font-size: 1.18rem;
+  box-shadow: 0 8px 18px rgba(255, 111, 97, 0.65);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  user-select: none;
+  text-shadow: 1px 1px 2px #cc5548;
+  filter: drop-shadow(0 2px 2px #cc553f);
+}
+.btn-chef i {
+  font-size: 1.6rem;
+}
+.btn-chef:hover {
+  background: linear-gradient(135deg, #f47eab, #870d44);
+  box-shadow: 0 12px 26px rgba(255, 67, 40, 0.8);
+  transform: translateY(-4px);
+}
+
+/* Container for recipes */
+.recipe-container {
+  width: 90%;
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Recipe card with flipping effect */
+.recipe-card {
+  perspective: 1200px;
+  cursor: pointer;
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  text-align: center;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  box-shadow: 0 12px 18px rgba(0, 0, 0, 0.12);
+  border-radius: 15px;
+  background: white;
+}
+
+.recipe-card:hover .flip-inner,
+.recipe-card.flip .flip-inner {
+  transform: rotateY(180deg);
+  box-shadow: 0 18px 24px rgba(255, 111, 97, 0.5);
+}
+
+/* Front and back faces */
+.flip-front,
+.flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.flip-front {
+  background: #fff;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.flip-front img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.flip-front .title {
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin: 1rem 1rem 0.5rem;
+  text-shadow: 1px 1px 3px #870d44;
+}
+
+.flip-front .desc {
+  font-size: 0.95rem;
+  margin: 0 1rem 1rem;
+  color: #666;
+  flex-grow: 1;
+}
+
+.flip-back {
+  background: #870d44;
+  color: white;
+  transform: rotateY(180deg);
+  padding: 1.5rem 1.5rem 2.5rem;
+  box-shadow: inset 0 0 40px #f47eab;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  overflow-y: auto;
+}
+
+.flip-back h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 5px #f47eab;
+}
+
+.flip-back ul {
+  text-align: left;
+  margin: 0 0 1rem 0;
+  padding-left: 18px;
+  flex-grow: 0;
+  line-height: 1.4;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+.flip-back ul li {
+  margin-bottom: 0.6rem;
+}
+
+.flip-back .procedure {
+  font-weight: 500;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  flex-grow: 1;
+  min-height: 120px;
+  overflow-y: auto;
+  margin-top: 0;
+}
+
+/* Eye-catching buttons */
+.btn {
+  background: linear-gradient(135deg, #870d44, #ff967b);
+  border: none;
+  padding: 0.75rem 1.8rem;
+  border-radius: 40px;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 6px 10px rgba(255, 111, 97, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  user-select: none;
+  margin-top: 1rem;
+  text-shadow: 1px 1px 2px #f47eab;
+}
+.btn i {
+  font-size: 1.2rem;
+}
+.btn:hover {
+  background: linear-gradient(135deg, #f47eab, #870d44);
+  box-shadow: 0 10px 20px rgba(255, 67, 40, 0.7);
+  transform: translateY(-3px);
+}
+
+/* Footer */
+footer {
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
+  width: 90%;
+  max-width: 1100px;
+  user-select: none;
+}
+
+/* Scrollbar stylings for flip back elements */
+.flip-back ul::-webkit-scrollbar,
+.flip-back .procedure::-webkit-scrollbar {
+  width: 8px;
+}
+.flip-back ul::-webkit-scrollbar-thumb,
+.flip-back .procedure::-webkit-scrollbar-thumb {
+  background: #ff6a4dbb;
+  border-radius: 20px;
+}
+.flip-back ul::-webkit-scrollbar-track,
+.flip-back .procedure::-webkit-scrollbar-track {
+  background: #f47eab;
+}
+.flip-back::-webkit-scrollbar {
+  width: 8px;
+}
+.flip-back::-webkit-scrollbar-thumb {
+  background: #ff3b20aa;
+  border-radius: 20px;
+}
+.flip-back::-webkit-scrollbar-track {
+  background: #ff6a4d33;
+}
+
+/* Responsive tweaks */
+@media (max-width: 500px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  .flip-inner {
+    height: 380px;
+  }
+  .form-container {
+    padding: 1.5rem 1.6rem;
+  }
+}

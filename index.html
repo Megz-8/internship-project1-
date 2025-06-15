@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stylish Recipe Book</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="styles.css" />
+     <link rel="icon" href="favicon.ico" type="image/x-icon">
+   
+</head>
+<body>
+  <h1><i class="fas fa-utensils"></i> My Recipe Book</h1>
+  <h2>Discover Delicious Recipes With Style</h2>
+
+  <div class="form-container" aria-label="Add or search recipes">
+    <div class="input-group">
+      <label for="recipe-name">Recipe Name</label>
+      <input type="text" id="recipe-name" placeholder="Enter recipe name..." autocomplete="off" />
+    </div>
+
+    <div class="input-group" style="flex-basis: 100%;">
+      <label for="recipe-ingredients">Ingredients (one per line)</label>
+      <textarea id="recipe-ingredients" placeholder="List ingredients, one per line..."></textarea>
+    </div>
+
+    <div class="input-group" style="flex-basis: 100%;">
+      <label for="recipe-procedure">Procedure</label>
+      <textarea id="recipe-procedure" placeholder="Describe the cooking procedure..."></textarea>
+    </div>
+
+    <div class="input-group" style="flex-basis: 100%;">
+      <label for="recipe-image">Recipe Image URL</label>
+      <input type="text" id="recipe-image" placeholder="Enter image URL (optional, defaults to random)..." />
+    </div>
+
+    <div class="btn-container" style="flex-basis: 100%; justify-content:center;">
+      <button class="btn-chef" id="add-recipe-btn" title="Add Recipe" aria-label="Add Recipe">
+        <i class="fas fa-hat-chef"></i> Add Recipe
+      </button>
+    </div>
+
+    <div style="flex-basis: 100%; text-align: center; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #ffe0db;">
+        <button class="btn-tawa" id="search-toggle-btn" title="Toggle Search Existing Recipes" aria-label="Toggle Search Existing Recipes">
+            <i class="fas fa-magnifying-glass"></i>
+        </button>
+        <textarea id="recipe-search" rows="2" placeholder="Type here to search your recipes..." style="display: none; width: 100%; max-width: 550px; margin: 0.75rem auto 0 auto;"></textarea>
+    </div>
+  </div>
+
+  <div class="recipe-container" id="recipe-container" aria-live="polite"></div>
+
+  <footer>
+    &copy; <span id="current-year">2025</span> Recipe Book. Made with <i class="fas fa-heart" style="color:#ff6f61;"></i>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
