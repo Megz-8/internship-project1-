@@ -15,7 +15,12 @@ app.use(bodyParser.json());
 // Serve static frontend files from 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Utility functions to read and write recipes.json
+// Favicon route (MUST be before the wildcard route)
+app.get('/favicon.ico', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'favicon.ico'));
+});
+
+// Utility functions
 const recipesFilePath = path.join(__dirname, 'recipes.json');
 
 function readRecipes() {
@@ -31,13 +36,13 @@ function writeRecipes(recipes) {
   fs.writeFileSync(recipesFilePath, JSON.stringify(recipes, null, 2));
 }
 
-// API Endpoint: Get all recipes
+// API: Get all recipes
 app.get('/api/recipes', (req, res) => {
   const recipes = readRecipes();
   res.json(recipes);
 });
 
-// API Endpoint: Add a new recipe
+// API: Add a new recipe
 app.post('/api/recipes', (req, res) => {
   const { name, ingredients, preparation, image } = req.body;
   if (!name || !ingredients || !preparation) {
@@ -54,7 +59,7 @@ app.post('/api/recipes', (req, res) => {
   res.status(201).json(newRecipe);
 });
 
-// API Endpoint: Delete a recipe by name (case-insensitive)
+// API: Delete recipe by name
 app.delete('/api/recipes/:name', (req, res) => {
   const recipeName = req.params.name.toLowerCase();
   let recipes = readRecipes();
@@ -67,7 +72,7 @@ app.delete('/api/recipes/:name', (req, res) => {
   res.json({ message: 'Recipe deleted' });
 });
 
-// For any other route, serve index.html (for frontend routing / single page app support)
+// Wildcard route for SPA support (keep at the end)
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
@@ -76,7 +81,3 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
-   app.get('/favicon.ico', (req, res) => {
-       res.sendFile(path.join(__dirname, 'public', 'favicon.ico'));
-   });
-   
